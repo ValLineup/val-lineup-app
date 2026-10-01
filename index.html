@@ -54,6 +54,17 @@
     .btn:hover { filter: brightness(1.08); }
     .legal { margin-top: 24px; font-size: 11.5px; color: var(--faint); line-height: 1.5; }
     [hidden] { display: none !important; }
+    form { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+    input {
+      width: 100%; padding: 11px 12px; border-radius: 8px; border: 1px solid var(--line-2);
+      background: var(--bg); color: var(--text); font: inherit; font-size: 14px; outline: none;
+    }
+    input:focus { border-color: var(--accent); }
+    button.btn { border: 0; cursor: pointer; font: inherit; font-size: 14px; }
+    button.btn:disabled { opacity: 0.5; cursor: default; }
+    .msg { margin: 0; font-size: 13px; color: #ffb3b3; }
+    .links { margin-top: 18px; font-size: 13px; }
+    .links a { color: var(--muted); }
   </style>
 </head>
 <body>
@@ -77,6 +88,24 @@
       <p>Essaie de te connecter dans l’application : si ton adresse était déjà confirmée, ça fonctionnera. Sinon, recrée ton compte pour recevoir un nouveau lien.</p>
     </section>
 
+    <!-- Nouveau mot de passe (lien « Mot de passe oublié ») -->
+    <section class="card" id="reset" hidden>
+      <h1>Choisis un nouveau mot de passe</h1>
+      <form id="resetForm" novalidate>
+        <input type="password" id="pw1" placeholder="Nouveau mot de passe (8 caractères, lettres et chiffres)" autocomplete="new-password">
+        <input type="password" id="pw2" placeholder="Confirme le nouveau mot de passe" autocomplete="new-password">
+        <p class="msg" id="resetMsg" hidden></p>
+        <button type="submit" class="btn" id="resetBtn">Enregistrer le mot de passe</button>
+      </form>
+    </section>
+
+    <section class="card" id="resetOk" hidden>
+      <div class="badge ok">✓</div>
+      <h1>Mot de passe modifié</h1>
+      <p><b>Retourne dans l’application</b> et connecte-toi avec ton nouveau mot de passe.</p>
+      <p>Tu peux fermer cette page.</p>
+    </section>
+
     <!-- Visite normale : page de téléchargement -->
     <section class="card" id="home" hidden>
       <h1>Apprends tes lineups Valorant</h1>
@@ -84,28 +113,74 @@
       <a class="btn" href="https://github.com/enzolegros16/val-lineup-app/releases/latest">Télécharger pour Windows</a>
     </section>
 
+    <p class="links"><a href="confidentialite.html">Politique de confidentialité</a></p>
     <p class="legal">Val LineUp n’est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de quiconque officiellement impliqué dans la production ou la gestion des propriétés de Riot Games. Riot Games et toutes les propriétés associées sont des marques commerciales ou des marques déposées de Riot Games, Inc.</p>
   </main>
 
   <script>
     (function () {
+      // Adresse et clé PUBLIQUE du projet Supabase (la même que dans l'application).
+      var SUPABASE_URL = 'https://oxeirzkulmwkwwwfcjyj.supabase.co';
+      var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94ZWlyemt1bG13a3d3d2ZjanlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA4NTc5MjYsImV4cCI6MjEwNjQzMzkyNn0.J7Gw12pzBIj2DS-osRE3h_yqzTcojDyEhoVMBfO5YCo';
+
       var hash = new URLSearchParams(location.hash.replace(/^#/, ''));
       var query = new URLSearchParams(location.search);
       var error = hash.get('error') || query.get('error');
-      var confirmed = hash.get('access_token') || hash.get('type') === 'signup' || query.get('code');
+      var token = hash.get('access_token');
+      var type = hash.get('type');
+      var show = function (id) { document.getElementById(id).hidden = false; };
+
       if (error) {
-        document.getElementById('ko').hidden = false;
+        show('ko');
         var code = hash.get('error_code') || query.get('error_code') || '';
         if (code === 'otp_expired') {
-          document.getElementById('koText').textContent = 'Ce lien de confirmation a expiré ou a déjà été utilisé.';
+          document.getElementById('koText').textContent = 'Ce lien a expiré ou a déjà été utilisé.';
         }
-      } else if (confirmed) {
-        document.getElementById('ok').hidden = false;
+      } else if (token && type === 'recovery') {
+        show('reset');
+      } else if (token || type === 'signup' || query.get('code')) {
+        show('ok');
       } else {
-        document.getElementById('home').hidden = false;
+        show('home');
       }
       // On retire les jetons de l'adresse : ils ne doivent pas rester visibles ni être partagés.
       if (location.hash || location.search) history.replaceState(null, '', location.pathname);
+
+      var form = document.getElementById('resetForm');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var pw1 = document.getElementById('pw1').value;
+        var pw2 = document.getElementById('pw2').value;
+        var msg = document.getElementById('resetMsg');
+        var btn = document.getElementById('resetBtn');
+        var fail = function (t) { msg.hidden = false; msg.textContent = t; };
+        msg.hidden = true;
+        if (pw1.length < 8 || !/[a-z]/i.test(pw1) || !/\d/.test(pw1)) return fail('Le mot de passe doit faire au moins 8 caractères, avec au moins une lettre et un chiffre.');
+        if (pw1 !== pw2) return fail('Les deux mots de passe ne sont pas identiques.');
+        btn.disabled = true;
+        fetch(SUPABASE_URL + '/auth/v1/user', {
+          method: 'PUT',
+          headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password: pw1 })
+        }).then(function (res) {
+          if (res.ok) {
+            document.getElementById('reset').hidden = true;
+            show('resetOk');
+            return;
+          }
+          return res.json().catch(function () { return {}; }).then(function (j) {
+            var all = (j.error_code || '') + ' ' + (j.msg || j.message || '');
+            if (res.status === 401 || /expired|invalid/i.test(all)) fail('Ce lien a expiré. Refais une demande « Mot de passe oublié » dans l’application.');
+            else if (/same_password|different/i.test(all)) fail('Le nouveau mot de passe doit être différent de l’ancien.');
+            else if (/weak|password should/i.test(all)) fail('Mot de passe trop faible : utilise au moins 8 caractères, avec lettres et chiffres.');
+            else fail('Impossible d’enregistrer le mot de passe. Réessaie plus tard.');
+            btn.disabled = false;
+          });
+        }).catch(function () {
+          fail('Connexion impossible. Vérifie ta connexion Internet.');
+          btn.disabled = false;
+        });
+      });
     })();
   </script>
 </body>
