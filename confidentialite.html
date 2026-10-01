@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Confidentialité · Val LineUp</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    :root { --bg: #0b0f14; --panel: #141b24; --line: #243040; --text: #e9eef4; --muted: #9aa9bd; --faint: #5d6b7e; --accent: #ff4655; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 40px 16px 60px; color: var(--text);
+      font-family: 'Bahnschrift', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 15% 0%, rgba(255, 70, 85, 0.12), transparent 40%), var(--bg);
+      line-height: 1.6;
+    }
+    main { max-width: 760px; margin: 0 auto; }
+    header { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+    header img { width: 64px; height: auto; }
+    header a { color: var(--muted); font-size: 14px; }
+    h1 { font-size: 30px; margin: 0 0 6px; }
+    .updated { color: var(--faint); font-size: 13px; margin: 0 0 28px; }
+    section { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; margin-bottom: 14px; }
+    h2 { font-size: 17px; margin: 0 0 8px; color: var(--text); }
+    p, li { color: var(--muted); font-size: 15px; }
+    p { margin: 0 0 10px; }
+    p:last-child { margin-bottom: 0; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin-bottom: 4px; }
+    b { color: var(--text); font-weight: 600; }
+    a { color: var(--accent); }
+    .todo { background: rgba(255, 70, 85, 0.15); color: var(--text); padding: 0 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <img src="logo.png" alt="Val LineUp">
+      <a href="./">← Retour à l’accueil</a>
+    </header>
+
+    <h1>Politique de confidentialité</h1>
+    <p class="updated">Dernière mise à jour : 2 octobre 2026</p>
+
+    <section>
+      <h2>Qui est responsable de tes données ?</h2>
+      <p>Val LineUp est une application gratuite créée et gérée par Enzo, à titre personnel. Pour toute question sur tes données, écris à : <b class="todo">ADRESSE_DE_CONTACT</b>.</p>
+    </section>
+
+    <section>
+      <h2>Quelles données sont enregistrées ?</h2>
+      <ul>
+        <li><b>Ton compte</b> : ton adresse mail, ton pseudo et ton mot de passe. Le mot de passe n’est jamais stocké en clair : il est chiffré par notre hébergeur, et personne ne peut le lire, pas même le créateur de l’app.</li>
+        <li><b>Ta progression</b> : les lineups que tu as marqués comme maîtrisés, tes révisions d’entraînement, tes agents choisis et tes préférences de l’app.</li>
+        <li><b>Tes signalements</b> : quand tu signales un problème sur un lineup, on enregistre le lineup concerné, la raison, ton message éventuel et la version de l’app. Les signalements ne sont pas reliés à ton compte.</li>
+      </ul>
+      <p>L’application ne collecte <b>aucune donnée de jeu</b> : elle ne lit pas Valorant, ne se connecte pas à ton compte Riot et ne fonctionne pas pendant les parties.</p>
+    </section>
+
+    <section>
+      <h2>Pourquoi ?</h2>
+      <ul>
+        <li>Te permettre de te connecter et de garder ton accès à l’application.</li>
+        <li>Retrouver ta progression sur n’importe quel PC.</li>
+        <li>T’envoyer les mails indispensables : confirmation d’adresse et réinitialisation du mot de passe. <b>Aucun mail publicitaire</b> n’est envoyé.</li>
+        <li>Corriger les lineups signalés.</li>
+      </ul>
+      <p>Tes données ne sont <b>jamais vendues, louées ni partagées</b> à des fins commerciales, et il n’y a ni publicité ni outil de suivi dans l’application.</p>
+    </section>
+
+    <section>
+      <h2>Où sont-elles stockées ?</h2>
+      <p>Les comptes, la progression et les signalements sont hébergés par <b>Supabase</b> (base de données), sur des serveurs situés en Europe. L’application et cette page sont distribuées par <b>GitHub</b>. Les mails sont envoyés par un service d’envoi d’emails, uniquement pour les messages listés plus haut.</p>
+      <p>Une copie de ta progression et des lineups est aussi gardée <b>sur ton PC</b>, pour que l’app fonctionne hors ligne.</p>
+    </section>
+
+    <section>
+      <h2>Combien de temps ?</h2>
+      <p>Tes données sont conservées tant que ton compte existe. Quand tu supprimes ton compte, ton adresse mail, ton pseudo et ta progression en ligne sont effacés immédiatement. Les signalements, anonymes, peuvent être conservés jusqu’à leur traitement.</p>
+    </section>
+
+    <section>
+      <h2>Tes droits</h2>
+      <p>Conformément au RGPD, tu peux à tout moment accéder à tes données, les corriger ou les supprimer :</p>
+      <ul>
+        <li><b>Modifier ton pseudo ou ton mot de passe</b> : dans l’app, bouton avec ton pseudo en haut à droite → Mon compte.</li>
+        <li><b>Supprimer ton compte</b> : Mon compte → « Supprimer mon compte ». La suppression est immédiate et définitive.</li>
+        <li>Pour toute autre demande (copie de tes données, question), écris à l’adresse de contact ci-dessus.</li>
+      </ul>
+      <p>Si tu estimes que tes droits ne sont pas respectés, tu peux adresser une réclamation à la CNIL (<a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>).</p>
+    </section>
+
+    <section>
+      <h2>Âge minimum</h2>
+      <p>En France, il faut avoir au moins 15 ans pour créer un compte seul. En dessous, l’accord d’un parent est nécessaire.</p>
+    </section>
+
+    <p class="updated" style="margin-top: 24px">Val LineUp n’est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de quiconque officiellement impliqué dans la production ou la gestion des propriétés de Riot Games. Riot Games et toutes les propriétés associées sont des marques commerciales ou des marques déposées de Riot Games, Inc.</p>
+  </main>
+</body>
+</html>
