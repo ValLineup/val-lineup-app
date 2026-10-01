@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Val LineUp</title>
+  <meta name="description" content="Val LineUp : apprends tes lineups Valorant. Clique sur un point d'impact, vois d'où et comment lancer.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    :root {
+      --bg: #0b0f14; --panel: #141b24; --line: #243040; --line-2: #2f3d50;
+      --text: #e9eef4; --muted: #8b9bb0; --faint: #5d6b7e;
+      --accent: #ff4655; --good: #3ddc97; --bad: #ff6b6b;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: 'Bahnschrift', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255, 70, 85, 0.16), transparent 45%),
+        radial-gradient(circle at 85% 90%, rgba(76, 201, 240, 0.10), transparent 50%),
+        var(--bg);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+    main { width: 100%; max-width: 460px; text-align: center; }
+    .logo { width: 170px; height: auto; filter: drop-shadow(0 0 22px rgba(255, 70, 85, 0.3)); }
+    .card {
+      margin-top: 26px;
+      background: var(--panel);
+      border: 1px solid var(--line-2);
+      border-radius: 14px;
+      padding: 28px 26px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+    }
+    .badge {
+      width: 58px; height: 58px; border-radius: 50%;
+      margin: 0 auto 16px; display: grid; place-items: center;
+      font-size: 28px; font-weight: 700;
+    }
+    .badge.ok { background: rgba(61, 220, 151, 0.12); color: var(--good); border: 1px solid rgba(61, 220, 151, 0.5); }
+    .badge.ko { background: rgba(255, 107, 107, 0.12); color: var(--bad); border: 1px solid rgba(255, 107, 107, 0.5); }
+    h1 { margin: 0 0 10px; font-size: 24px; font-weight: 600; }
+    p { margin: 0 0 12px; color: var(--muted); line-height: 1.55; }
+    p b { color: var(--text); font-weight: 600; }
+    .btn {
+      display: inline-block; margin-top: 8px; padding: 11px 20px; border-radius: 8px;
+      background: var(--accent); color: #fff; text-decoration: none; font-size: 14px;
+    }
+    .btn:hover { filter: brightness(1.08); }
+    .legal { margin-top: 24px; font-size: 11.5px; color: var(--faint); line-height: 1.5; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <main>
+    <img class="logo" src="logo.png" alt="Val LineUp">
+
+    <!-- Adresse confirmée -->
+    <section class="card" id="ok" hidden>
+      <div class="badge ok">✓</div>
+      <h1>Adresse mail confirmée</h1>
+      <p>Ton compte Val LineUp est activé.</p>
+      <p><b>Retourne dans l’application</b> et connecte-toi avec ton adresse mail et ton mot de passe.</p>
+      <p>Tu peux fermer cette page.</p>
+    </section>
+
+    <!-- Lien expiré ou invalide -->
+    <section class="card" id="ko" hidden>
+      <div class="badge ko">!</div>
+      <h1>Lien expiré ou déjà utilisé</h1>
+      <p id="koText">Ce lien de confirmation n’est plus valable.</p>
+      <p>Essaie de te connecter dans l’application : si ton adresse était déjà confirmée, ça fonctionnera. Sinon, recrée ton compte pour recevoir un nouveau lien.</p>
+    </section>
+
+    <!-- Visite normale : page de téléchargement -->
+    <section class="card" id="home" hidden>
+      <h1>Apprends tes lineups Valorant</h1>
+      <p>Clique sur un point d’impact, vois d’où lancer, où te placer et où viser, puis entraîne-toi pour les retenir.</p>
+      <a class="btn" href="https://github.com/enzolegros16/val-lineup-app/releases/latest">Télécharger pour Windows</a>
+    </section>
+
+    <p class="legal">Val LineUp n’est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de quiconque officiellement impliqué dans la production ou la gestion des propriétés de Riot Games. Riot Games et toutes les propriétés associées sont des marques commerciales ou des marques déposées de Riot Games, Inc.</p>
+  </main>
+
+  <script>
+    (function () {
+      var hash = new URLSearchParams(location.hash.replace(/^#/, ''));
+      var query = new URLSearchParams(location.search);
+      var error = hash.get('error') || query.get('error');
+      var confirmed = hash.get('access_token') || hash.get('type') === 'signup' || query.get('code');
+      if (error) {
+        document.getElementById('ko').hidden = false;
+        var code = hash.get('error_code') || query.get('error_code') || '';
+        if (code === 'otp_expired') {
+          document.getElementById('koText').textContent = 'Ce lien de confirmation a expiré ou a déjà été utilisé.';
+        }
+      } else if (confirmed) {
+        document.getElementById('ok').hidden = false;
+      } else {
+        document.getElementById('home').hidden = false;
+      }
+      // On retire les jetons de l'adresse : ils ne doivent pas rester visibles ni être partagés.
+      if (location.hash || location.search) history.replaceState(null, '', location.pathname);
+    })();
+  </script>
+</body>
+</html>
