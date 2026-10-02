@@ -203,10 +203,10 @@
         <h1 data-i18n="heroTitle">Apprends tes lineups Valorant.<br><span>Place, vise, lance.</span></h1>
         <p class="lead" data-i18n="heroLead">Clique sur un point d’impact de la map : Val LineUp te montre d’où lancer, où te placer, où viser et comment lancer. Puis entraîne-toi jusqu’à les connaître par cœur.</p>
         <div class="dl">
-          <a class="btn big dl-setup" href="https://github.com/enzolegros16/val-lineup-app/releases/latest"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14"/></svg><span data-i18n="dlSetup">Télécharger pour Windows</span></a>
+          <a class="btn big dl-setup" href="https://github.com/ValLineup/val-lineup-app/releases/latest"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14"/></svg><span data-i18n="dlSetup">Télécharger pour Windows</span></a>
           <a class="btn big discord dl-discord" hidden target="_blank" rel="noopener" data-i18n="discord">Rejoindre le Discord</a>
         </div>
-        <p class="dl-meta"><span class="dl-version" data-i18n="dlMeta">Gratuit · Windows 10 et 11 · compte gratuit obligatoire</span><span class="dl-portable-wrap"> · <a class="dl-portable" href="https://github.com/enzolegros16/val-lineup-app/releases/latest" style="color: var(--muted)" data-i18n="dlPortable">version portable (sans installation)</a></span></p>
+        <p class="dl-meta"><span class="dl-version" data-i18n="dlMeta">Gratuit · Windows 10 et 11 · compte gratuit obligatoire</span><span class="dl-portable-wrap"> · <a class="dl-portable" href="https://github.com/ValLineup/val-lineup-app/releases/latest" style="color: var(--muted)" data-i18n="dlPortable">version portable (sans installation)</a></span></p>
       </div>
       <div>
         <img class="hero-shot" id="heroShot" src="captures/1.png" alt="Val LineUp">
@@ -320,13 +320,13 @@
       <h2 data-i18n="ctaTitle">Prêt à apprendre tes lineups ?</h2>
       <p data-i18n="ctaSub">Gratuit, en français et en anglais.</p>
       <div class="dl">
-        <a class="btn big dl-setup" href="https://github.com/enzolegros16/val-lineup-app/releases/latest"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14"/></svg><span data-i18n="dlSetup2">Télécharger pour Windows</span></a>
+        <a class="btn big dl-setup" href="https://github.com/ValLineup/val-lineup-app/releases/latest"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14"/></svg><span data-i18n="dlSetup2">Télécharger pour Windows</span></a>
         <a class="btn big discord dl-discord" hidden target="_blank" rel="noopener" data-i18n="discord2">Rejoindre le Discord</a>
       </div>
     </section>
 
     <div class="foot">
-      <p class="links"><a href="confidentialite.html" data-i18n="privacy2">Politique de confidentialité</a> · <a href="https://github.com/enzolegros16/val-lineup-app/releases" data-i18n="allVersions">Toutes les versions</a></p>
+      <p class="links"><a href="confidentialite.html" data-i18n="privacy2">Politique de confidentialité</a> · <a href="https://github.com/ValLineup/val-lineup-app/releases" data-i18n="allVersions">Toutes les versions</a></p>
       <p class="legal" data-i18n="legal2">Val LineUp n’est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de quiconque officiellement impliqué dans la production ou la gestion des propriétés de Riot Games. Riot Games et toutes les propriétés associées sont des marques commerciales ou des marques déposées de Riot Games, Inc.</p>
     </div>
   </div>
@@ -480,7 +480,7 @@
         if (location.hash === '#smartscreen') document.getElementById('faqSmart').open = true;
 
         // Dernière version : liens directs vers l'installateur et la version portable.
-        fetch('https://api.github.com/repos/enzolegros16/val-lineup-app/releases/latest', { headers: { Accept: 'application/vnd.github+json' } })
+        fetch('https://api.github.com/repos/ValLineup/val-lineup-app/releases/latest', { headers: { Accept: 'application/vnd.github+json' } })
           .then(function (r) { return r.ok ? r.json() : null; })
           .then(function (rel) {
             if (!rel || !rel.assets) return;
