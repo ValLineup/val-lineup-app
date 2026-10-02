@@ -74,10 +74,86 @@
     .features li { color: var(--muted); font-size: 14px; line-height: 1.5; padding: 5px 0 5px 22px; position: relative; }
     .features li::before { content: '◆'; position: absolute; left: 2px; top: 5px; color: var(--accent); font-size: 11px; }
     .small { font-size: 12.5px; color: var(--faint); margin-top: 12px; }
+
+    /* ===== Page d'accueil (téléchargement) ===== */
+    body.landing { display: block; padding: 0; }
+    body.landing main.narrow { display: none; }
+    #landing { max-width: 1060px; margin: 0 auto; padding: 56px 20px 40px; }
+    .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+    .hero .logo { width: 150px; }
+    .hero h1 { font-size: 40px; line-height: 1.12; margin: 18px 0 14px; letter-spacing: -0.01em; }
+    .hero h1 span { color: var(--accent); }
+    .hero .lead { font-size: 16.5px; color: var(--muted); line-height: 1.6; margin: 0 0 22px; }
+    .dl { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .btn.big { padding: 14px 24px; font-size: 15.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; margin: 0; }
+    .btn.big svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .btn.ghost { background: transparent; border: 1px solid var(--line-2); color: var(--text); }
+    .btn.ghost:hover { border-color: var(--muted); }
+    .dl-meta { margin: 12px 0 0; font-size: 13px; color: var(--faint); }
+    .hero-shot { border-radius: 14px; border: 1px solid var(--line-2); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55); width: 100%; height: auto; display: block; background: var(--panel); }
+    .hero-art { aspect-ratio: 16 / 10; border-radius: 14px; border: 1px solid var(--line-2); background:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px) 0 0 / 28px 28px,
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px) 0 0 / 28px 28px, var(--panel);
+      position: relative; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55); }
+    .hero-art i { position: absolute; display: block; }
+    .hero-art .t { width: 18px; height: 18px; background: #ffb547; transform: rotate(45deg); box-shadow: 0 0 0 4px rgba(255,181,71,0.25); }
+    .hero-art .p { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #0b0f14; }
+    .hero-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    section.block { margin-top: 72px; }
+    section.block > h2 { font-size: 26px; margin: 0 0 8px; text-align: center; }
+    section.block > .sub { text-align: center; color: var(--muted); margin: 0 auto 26px; max-width: 620px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .feat { background: var(--panel); border: 1px solid var(--line-2); border-radius: 12px; padding: 18px; text-align: left; }
+    .feat b { display: block; font-size: 15px; margin-bottom: 6px; color: var(--text); }
+    .feat p { margin: 0; font-size: 13.5px; }
+    .feat .ic { font-size: 20px; margin-bottom: 8px; display: block; }
+    .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .gallery figure { margin: 0; background: var(--panel); border: 1px solid var(--line-2); border-radius: 12px; overflow: hidden; }
+    .gallery img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+    .gallery figcaption { padding: 10px 14px; font-size: 13.5px; color: var(--muted); text-align: left; }
+    .video-wrap { max-width: 860px; margin: 0 auto; border-radius: 14px; overflow: hidden; border: 1px solid var(--line-2); background: #000; }
+    .video-wrap video { width: 100%; display: block; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; counter-reset: s; }
+    .step { background: var(--panel); border: 1px solid var(--line-2); border-radius: 12px; padding: 18px 18px 18px 58px; position: relative; text-align: left; }
+    .step::before { counter-increment: s; content: counter(s); position: absolute; left: 16px; top: 16px; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: 14px; }
+    .step b { display: block; margin-bottom: 4px; }
+    .step p { margin: 0; font-size: 13.5px; }
+    .faq { max-width: 820px; margin: 0 auto; text-align: left; }
+    .faq details { background: var(--panel); border: 1px solid var(--line-2); border-radius: 10px; margin-bottom: 10px; }
+    .faq summary { cursor: pointer; padding: 15px 18px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; color: var(--accent); font-size: 20px; line-height: 1; }
+    .faq details[open] summary::after { content: '−'; }
+    .faq .ans { padding: 0 18px 16px; }
+    .faq .ans p, .faq .ans li { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .faq .ans ol { margin: 0 0 10px; padding-left: 20px; }
+    .smartscreen { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+    .ss { background: #0067b8; color: #fff; border-radius: 6px; padding: 16px 16px 14px; font-family: 'Segoe UI', system-ui, sans-serif; position: relative; font-size: 12.5px; line-height: 1.45; }
+    .ss .ss-t { font-size: 17px; font-weight: 300; margin: 0 0 8px; }
+    .ss p { color: #fff !important; font-size: 12px !important; margin: 0 0 8px; }
+    .ss u { font-weight: 600; outline: 2px solid #ffd166; outline-offset: 2px; border-radius: 2px; }
+    .ss .ss-btns { display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px; }
+    .ss .ss-btns span { border: 1px solid rgba(255,255,255,0.8); padding: 4px 12px; font-size: 12px; }
+    .ss .ss-btns span.hl { outline: 2px solid #ffd166; outline-offset: 2px; background: rgba(255,255,255,0.12); }
+    .ss .ss-n { position: absolute; top: -10px; left: -10px; width: 24px; height: 24px; border-radius: 50%; background: #ffd166; color: #0b0f14; font-weight: 700; display: grid; place-items: center; font-size: 13px; }
+    .ss-note { font-size: 12px !important; color: var(--faint) !important; }
+    .cta { margin-top: 72px; text-align: center; background: linear-gradient(135deg, rgba(255,70,85,0.16), rgba(76,201,240,0.08)); border: 1px solid var(--line-2); border-radius: 16px; padding: 34px 20px; }
+    .cta h2 { margin: 0 0 8px; font-size: 24px; }
+    .cta .dl { justify-content: center; margin-top: 16px; }
+    .foot { margin-top: 40px; text-align: center; }
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: grid; place-items: center; z-index: 50; padding: 20px; cursor: zoom-out; }
+    .lightbox img { max-width: 100%; max-height: 100%; border-radius: 8px; }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 32px; }
+      .grid, .steps { grid-template-columns: 1fr; }
+      .gallery, .smartscreen { grid-template-columns: 1fr; }
+      #landing { padding-top: 64px; }
+    }
   </style>
 </head>
 <body>
-  <main>
+  <main class="narrow">
     <img class="logo" src="logo.png" alt="Val LineUp">
 
     <!-- Adresse confirmée -->
@@ -115,23 +191,149 @@
       <p data-i18n="close">Tu peux fermer cette page.</p>
     </section>
 
-    <!-- Visite normale : page de téléchargement -->
-    <section class="card" id="home" hidden>
-      <h1 data-i18n="homeTitle">Apprends tes lineups Valorant</h1>
-      <p data-i18n="homeText">Clique sur un point d’impact, vois d’où lancer, où te placer et où viser, puis entraîne-toi pour les retenir.</p>
-      <ul class="features">
-        <li data-i18n="f1">Captures « où se placer » et « où viser », étapes et vidéos au ralenti</li>
-        <li data-i18n="f2">Entraînement avec révisions espacées, dans les deux sens</li>
-        <li data-i18n="f3">Playbooks d’équipe, favoris, notes perso et suivi de ta progression</li>
-        <li data-i18n="f4">Partage d’un lineup à un pote en un lien</li>
-      </ul>
-      <a class="btn" href="https://github.com/enzolegros16/val-lineup-app/releases/latest" data-i18n="download">Télécharger pour Windows</a><a class="btn discord" id="discordBtn" hidden target="_blank" rel="noopener" data-i18n="discord">Rejoindre le Discord</a>
-      <p class="small" data-i18n="free">Gratuit · Windows 10 et 11 · compte gratuit obligatoire</p>
-    </section>
-
     <p class="links"><a href="confidentialite.html" data-i18n="privacy">Politique de confidentialité</a></p>
     <p class="legal" data-i18n="legal">Val LineUp n’est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de quiconque officiellement impliqué dans la production ou la gestion des propriétés de Riot Games. Riot Games et toutes les propriétés associées sont des marques commerciales ou des marques déposées de Riot Games, Inc.</p>
   </main>
+
+  <!-- ===== Visite normale : page d'accueil et de téléchargement ===== -->
+  <div id="landing" hidden>
+    <header class="hero">
+      <div>
+        <img class="logo" src="logo.png" alt="Val LineUp">
+        <h1 data-i18n="heroTitle">Apprends tes lineups Valorant.<br><span>Place, vise, lance.</span></h1>
+        <p class="lead" data-i18n="heroLead">Clique sur un point d’impact de la map : Val LineUp te montre d’où lancer, où te placer, où viser et comment lancer. Puis entraîne-toi jusqu’à les connaître par cœur.</p>
+        <div class="dl">
+          <a class="btn big dl-setup" href="https://github.com/enzolegros16/val-lineup-app/releases/latest"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14"/></svg><span data-i18n="dlSetup">Télécharger pour Windows</span></a>
+          <a class="btn big discord dl-discord" hidden target="_blank" rel="noopener" data-i18n="discord">Rejoindre le Discord</a>
+        </div>
+        <p class="dl-meta"><span class="dl-version" data-i18n="dlMeta">Gratuit · Windows 10 et 11 · compte gratuit obligatoire</span><span class="dl-portable-wrap"> · <a class="dl-portable" href="https://github.com/enzolegros16/val-lineup-app/releases/latest" style="color: var(--muted)" data-i18n="dlPortable">version portable (sans installation)</a></span></p>
+      </div>
+      <div>
+        <img class="hero-shot" id="heroShot" src="captures/1.png" alt="Val LineUp">
+        <div class="hero-art" id="heroArt" hidden>
+          <svg viewBox="0 0 400 250" preserveAspectRatio="none"><path d="M70 205 Q 90 120 150 70" fill="none" stroke="#b388ff" stroke-width="2.5" stroke-dasharray="7 6"/><path d="M300 210 Q 320 140 280 90" fill="none" stroke="#ff7eb6" stroke-width="2.5" stroke-dasharray="7 6"/><path d="M200 220 Q 170 170 220 130" fill="none" stroke="#4cc9f0" stroke-width="2.5" stroke-dasharray="7 6"/></svg>
+          <i class="t" style="left: 36%; top: 25%"></i><i class="t" style="left: 68%; top: 33%"></i><i class="t" style="left: 53%; top: 49%"></i>
+          <i class="p" style="left: 16%; top: 80%; background: #b388ff"></i><i class="p" style="left: 73%; top: 82%; background: #ff7eb6"></i><i class="p" style="left: 48%; top: 86%; background: #4cc9f0"></i>
+        </div>
+      </div>
+    </header>
+
+    <section class="block">
+      <h2 data-i18n="featTitle">Tout pour retenir tes lineups</h2>
+      <p class="sub" data-i18n="featSub">Des lineups publiés et vérifiés à chaque patch, et des outils pour vraiment les apprendre.</p>
+      <div class="grid">
+        <div class="feat"><span class="ic">🎯</span><b data-i18n="ft1">Clique, vois, lance</b><p data-i18n="fd1">Les points d’impact sur la map, et pour chacun les positions de tir, avec une couleur par agent.</p></div>
+        <div class="feat"><span class="ic">📸</span><b data-i18n="ft2">Étape par étape</b><p data-i18n="fd2">Capture « où se placer », capture « où viser » annotée, type de lancer et vidéo au ralenti.</p></div>
+        <div class="feat"><span class="ic">🧠</span><b data-i18n="ft3">Entraînement intelligent</b><p data-i18n="fd3">Révisions espacées dans les deux sens : « D’où lancer ? » et « Où ça tombe ? ».</p></div>
+        <div class="feat"><span class="ic">📋</span><b data-i18n="ft4">Playbooks d’équipe</b><p data-i18n="fd4">Des exécutions complètes (smoke, flash, molly…) à réviser ensemble, dans l’ordre.</p></div>
+        <div class="feat"><span class="ic">⭐</span><b data-i18n="ft5">À ta façon</b><p data-i18n="fd5">Tes agents, tes favoris, tes notes perso et ta série de jours d’entraînement.</p></div>
+        <div class="feat"><span class="ic">🪟</span><b data-i18n="ft6">Mode compact</b><p data-i18n="fd6">Une petite fenêtre toujours au premier plan, à côté du jeu, et le partage d’un lineup en un lien.</p></div>
+      </div>
+    </section>
+
+    <section class="block" id="gallerySec">
+      <h2 data-i18n="galTitle">Aperçu</h2>
+      <p class="sub" data-i18n="galSub">Clique sur une image pour l’agrandir.</p>
+      <div class="gallery" id="gallery">
+        <figure><img src="captures/1.png" alt="" loading="lazy"><figcaption data-i18n="cap1">Les points d’impact et les positions de tir sur la map</figcaption></figure>
+        <figure><img src="captures/2.png" alt="" loading="lazy"><figcaption data-i18n="cap2">La fiche d’un lineup : où se placer, où viser, comment lancer</figcaption></figure>
+        <figure><img src="captures/3.png" alt="" loading="lazy"><figcaption data-i18n="cap3">L’entraînement : retrouve la position ou le point d’impact</figcaption></figure>
+        <figure><img src="captures/4.png" alt="" loading="lazy"><figcaption data-i18n="cap4">Ta progression par map et par agent</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="block" id="videoSec">
+      <h2 data-i18n="vidTitle">Val LineUp en une minute</h2>
+      <p class="sub" data-i18n="vidSub">Une démonstration rapide de l’application.</p>
+      <div class="video-wrap"><video id="demoVideo" controls preload="metadata" playsinline><source src="demo.mp4" type="video/mp4"></video></div>
+    </section>
+
+    <section class="block">
+      <h2 data-i18n="howTitle">Installer en 1 minute</h2>
+      <p class="sub" data-i18n="howSub">Gratuit, sans publicité.</p>
+      <div class="steps">
+        <div class="step"><b data-i18n="st1">Télécharge l’installateur</b><p data-i18n="sd1">Clique sur « Télécharger pour Windows » et ouvre le fichier ValLineUp-Setup.exe.</p></div>
+        <div class="step"><b data-i18n="st2">Laisse Windows l’ouvrir</b><p data-i18n="sd2">Si un écran bleu « Windows a protégé votre ordinateur » apparaît : « Informations complémentaires », puis « Exécuter quand même ». Voir la question plus bas.</p></div>
+        <div class="step"><b data-i18n="st3">Crée ton compte</b><p data-i18n="sd3">Un raccourci est créé sur le Bureau et dans le menu Démarrer. Lance Val LineUp et crée ton compte gratuit.</p></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 data-i18n="faqTitle">Questions fréquentes</h2>
+      <div class="faq">
+        <details id="faqSmart">
+          <summary data-i18n="q1">Windows affiche « Windows a protégé votre ordinateur ». Que faire ?</summary>
+          <div class="ans">
+            <p data-i18n="a1a">C’est normal pour une nouvelle application gratuite : Windows SmartScreen affiche ce message pour les programmes qui ne sont pas encore signés par un certificat payant ou téléchargés par beaucoup de monde. Ça ne veut pas dire qu’il y a un virus.</p>
+            <ol>
+              <li data-i18n="a1b">Clique sur <b>Informations complémentaires</b>.</li>
+              <li data-i18n="a1c">Vérifie que le fichier est bien <b>ValLineUp-Setup.exe</b>, puis clique sur <b>Exécuter quand même</b>.</li>
+            </ol>
+            <div class="smartscreen" data-notr>
+              <div class="ss"><span class="ss-n">1</span>
+                <div class="ss-t" data-i18n="ssT">Windows a protégé votre ordinateur</div>
+                <p data-i18n="ssP">Microsoft Defender SmartScreen a empêché le démarrage d’une application non reconnue. L’exécution de cette application peut mettre votre ordinateur en danger.</p>
+                <p><u data-i18n="ssMore">Informations complémentaires</u></p>
+                <div class="ss-btns"><span data-i18n="ssNo">Ne pas exécuter</span></div>
+              </div>
+              <div class="ss"><span class="ss-n">2</span>
+                <div class="ss-t" data-i18n="ssT2">Windows a protégé votre ordinateur</div>
+                <p><span data-i18n="ssApp">Application :</span> ValLineUp-Setup.exe<br><span data-i18n="ssPub">Éditeur : Éditeur inconnu</span></p>
+                <div class="ss-btns"><span class="hl" data-i18n="ssRun">Exécuter quand même</span><span data-i18n="ssNo2">Ne pas exécuter</span></div>
+              </div>
+            </div>
+            <p class="ss-note" data-i18n="ssNote">Illustration simplifiée : l’écran réel peut être un peu différent selon ta version de Windows. Télécharge toujours Val LineUp depuis cette page ou depuis la page GitHub officielle.</p>
+          </div>
+        </details>
+        <details>
+          <summary data-i18n="q2">Est-ce que je risque un ban ?</summary>
+          <div class="ans"><p data-i18n="a2">Val LineUp ne lit pas, ne modifie pas et ne se connecte jamais au jeu : c’est un outil à part, comme regarder un guide ou une vidéo. Il ne touche ni aux fichiers de Valorant ni à Vanguard. Utilise-le pour préparer tes parties.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="q3">C’est vraiment gratuit ?</summary>
+          <div class="ans"><p data-i18n="a3">Oui, entièrement gratuit, sans publicité. Le compte sert seulement à garder ta progression sur n’importe quel PC et à signaler un lineup qui ne marche plus.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="q4">Comment se font les mises à jour ?</summary>
+          <div class="ans"><p data-i18n="a4">Toutes seules : quand une nouvelle version sort, un bouton « Mise à jour » apparaît en haut de l’application. Un clic, et elle se met à jour puis se relance. Les nouveaux lineups, eux, arrivent automatiquement, sans rien faire.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="q5">Installateur ou version portable ?</summary>
+          <div class="ans"><p data-i18n="a5">L’installateur est conseillé : il crée les raccourcis sur le Bureau et dans le menu Démarrer, et se désinstalle proprement. La version portable est un simple fichier à lancer sans installation, pratique sur une clé USB. Ta progression est la même dans les deux cas.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="q6">Quelle configuration faut-il ?</summary>
+          <div class="ans"><p data-i18n="a6">Windows 10 ou 11 (64 bits), environ 400 Mo d’espace libre et une connexion Internet pour la première synchronisation. Ensuite, les lineups restent disponibles hors ligne.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="q7">Un lien de lineup partagé ne s’ouvre pas</summary>
+          <div class="ans"><p data-i18n="a7">Lance Val LineUp une première fois sur ton PC (et connecte-toi), puis reclique sur le lien : ton navigateur te demandera d’ouvrir Val LineUp.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="q8">Comment désinstaller Val LineUp ?</summary>
+          <div class="ans"><p data-i18n="a8">Paramètres de Windows → Applications → Applications installées → Val LineUp → Désinstaller. Pour supprimer aussi ton compte et ta progression en ligne, fais-le d’abord dans l’app : Mon compte → Supprimer mon compte.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="q9">Une question, un bug, une idée ?</summary>
+          <div class="ans"><p data-i18n="a9">Rejoins le Discord (bouton en haut de la page) ou écris à <a href="mailto:valolineup.support.pro@gmail.com">valolineup.support.pro@gmail.com</a>.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2 data-i18n="ctaTitle">Prêt à apprendre tes lineups ?</h2>
+      <p data-i18n="ctaSub">Gratuit, en français et en anglais.</p>
+      <div class="dl">
+        <a class="btn big dl-setup" href="https://github.com/enzolegros16/val-lineup-app/releases/latest"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14"/></svg><span data-i18n="dlSetup2">Télécharger pour Windows</span></a>
+        <a class="btn big discord dl-discord" hidden target="_blank" rel="noopener" data-i18n="discord2">Rejoindre le Discord</a>
+      </div>
+    </section>
+
+    <div class="foot">
+      <p class="links"><a href="confidentialite.html" data-i18n="privacy2">Politique de confidentialité</a> · <a href="https://github.com/enzolegros16/val-lineup-app/releases" data-i18n="allVersions">Toutes les versions</a></p>
+      <p class="legal" data-i18n="legal2">Val LineUp n’est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de quiconque officiellement impliqué dans la production ou la gestion des propriétés de Riot Games. Riot Games et toutes les propriétés associées sont des marques commerciales ou des marques déposées de Riot Games, Inc.</p>
+    </div>
+  </div>
 
   <script>
     window.I18N_TITLE = { fr: 'Val LineUp', en: 'Val LineUp' };
@@ -158,6 +360,59 @@
       discord: 'Join the Discord',
       free: 'Free · Windows 10 and 11 · free account required',
       privacy: 'Privacy policy',
+      heroTitle: 'Learn your Valorant lineups.<br><span>Stand, aim, throw.</span>',
+      heroLead: 'Click an impact point on the map: Val LineUp shows you where to throw from, where to stand, where to aim and how to throw. Then train until you know them by heart.',
+      dlSetup: 'Download for Windows', dlSetup2: 'Download for Windows',
+      dlMeta: 'Free · Windows 10 and 11 · free account required',
+      dlPortable: 'portable version (no install)',
+      discord2: 'Join the Discord',
+      featTitle: 'Everything to remember your lineups',
+      featSub: 'Lineups published and checked at every patch, and tools to really learn them.',
+      ft1: 'Click, see, throw', fd1: 'Impact points on the map, and for each one the throw positions, with one color per agent.',
+      ft2: 'Step by step', fd2: '“Where to stand” screenshot, annotated “where to aim” screenshot, throw type and slow-motion video.',
+      ft3: 'Smart training', fd3: 'Spaced repetition both ways: “Where to throw from?” and “Where does it land?”.',
+      ft4: 'Team playbooks', fd4: 'Full executes (smoke, flash, molly…) to review together, in order.',
+      ft5: 'Your way', fd5: 'Your agents, your favorites, your personal notes and your training streak.',
+      ft6: 'Compact mode', fd6: 'A small always-on-top window next to the game, and sharing a lineup with one link.',
+      galTitle: 'Preview', galSub: 'Click an image to enlarge it.',
+      cap1: 'Impact points and throw positions on the map',
+      cap2: 'A lineup sheet: where to stand, where to aim, how to throw',
+      cap3: 'Training: find the position or the impact point',
+      cap4: 'Your progress by map and by agent',
+      vidTitle: 'Val LineUp in one minute', vidSub: 'A quick demo of the app.',
+      howTitle: 'Install in 1 minute', howSub: 'Free, no ads.',
+      st1: 'Download the installer', sd1: 'Click “Download for Windows” and open the ValLineUp-Setup.exe file.',
+      st2: 'Let Windows open it', sd2: 'If a blue “Windows protected your PC” screen appears: “More info”, then “Run anyway”. See the question below.',
+      st3: 'Create your account', sd3: 'A shortcut is created on the Desktop and in the Start menu. Launch Val LineUp and create your free account.',
+      faqTitle: 'Frequently asked questions',
+      q1: 'Windows shows “Windows protected your PC”. What should I do?',
+      a1a: 'That’s normal for a new free app: Windows SmartScreen shows this message for programs that aren’t signed with a paid certificate yet or downloaded by many people. It doesn’t mean there’s a virus.',
+      a1b: 'Click <b>More info</b>.',
+      a1c: 'Check that the file is <b>ValLineUp-Setup.exe</b>, then click <b>Run anyway</b>.',
+      ssT: 'Windows protected your PC', ssT2: 'Windows protected your PC',
+      ssP: 'Microsoft Defender SmartScreen prevented an unrecognized app from starting. Running this app might put your PC at risk.',
+      ssMore: 'More info', ssNo: 'Don’t run', ssNo2: 'Don’t run', ssRun: 'Run anyway',
+      ssApp: 'App:', ssPub: 'Publisher: Unknown publisher',
+      ssNote: 'Simplified illustration: the real screen may look a little different depending on your version of Windows. Always download Val LineUp from this page or from the official GitHub page.',
+      q2: 'Can I get banned?',
+      a2: 'Val LineUp never reads, modifies or connects to the game: it’s a separate tool, like watching a guide or a video. It doesn’t touch Valorant’s files or Vanguard. Use it to prepare your matches.',
+      q3: 'Is it really free?',
+      a3: 'Yes, completely free, with no ads. The account is only used to keep your progress on any PC and to report a lineup that no longer works.',
+      q4: 'How do updates work?',
+      a4: 'By themselves: when a new version comes out, an “Update” button appears at the top of the app. One click and it updates and restarts. New lineups arrive automatically, without doing anything.',
+      q5: 'Installer or portable version?',
+      a5: 'The installer is recommended: it creates shortcuts on the Desktop and in the Start menu, and uninstalls cleanly. The portable version is a single file you run without installing, handy on a USB stick. Your progress is the same in both cases.',
+      q6: 'What are the requirements?',
+      a6: 'Windows 10 or 11 (64-bit), about 400 MB of free space and an Internet connection for the first sync. After that, lineups stay available offline.',
+      q7: 'A shared lineup link doesn’t open',
+      a7: 'Launch Val LineUp once on your PC (and log in), then click the link again: your browser will ask to open Val LineUp.',
+      q8: 'How do I uninstall Val LineUp?',
+      a8: 'Windows Settings → Apps → Installed apps → Val LineUp → Uninstall. To also delete your account and online progress, do it first in the app: My account → Delete my account.',
+      q9: 'A question, a bug, an idea?',
+      a9: 'Join the Discord (button at the top of the page) or write to <a href="mailto:valolineup.support.pro@gmail.com">valolineup.support.pro@gmail.com</a>.',
+      ctaTitle: 'Ready to learn your lineups?', ctaSub: 'Free, in French and English.',
+      privacy2: 'Privacy policy', allVersions: 'All versions',
+      legal2: 'Val LineUp isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.',
       legal: 'Val LineUp isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.'
     };
   </script>
@@ -175,6 +430,7 @@
       var show = function (id) { document.getElementById(id).hidden = false; };
       var koExpired = false;
       window.onLangChange = function () {
+        if (window.onLangChangeExtra) window.onLangChangeExtra();
         document.getElementById('koText').textContent = koExpired
           ? L('Ce lien a expiré ou a déjà été utilisé.', 'This link has expired or has already been used.')
           : L('Ce lien de confirmation n’est plus valable.', 'This confirmation link is no longer valid.');
@@ -189,19 +445,79 @@
       } else if (token || type === 'signup' || query.get('code')) {
         show('ok');
       } else {
-        show('home');
-        // Bouton Discord : le lien est réglé par le créateur dans l'app et publié avec les lineups.
+        document.body.classList.add('landing');
+        document.getElementById('landing').hidden = false;
+        initLanding();
+      }
+
+      // ----- Page d'accueil -----
+      function initLanding() {
+        var $$ = function (sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); };
+        // Captures : chaque image absente est retirée ; sans aucune, la section disparaît.
+        var gallery = document.getElementById('gallery');
+        var left = $$('#gallery img').length;
+        $$('#gallery img').forEach(function (img) {
+          var drop = function () {
+            img.parentNode.remove();
+            left--;
+            if (!left) document.getElementById('gallerySec').hidden = true;
+          };
+          if (img.complete && img.naturalWidth === 0) drop(); else img.addEventListener('error', drop);
+          img.addEventListener('click', function () {
+            var lb = document.createElement('div');
+            lb.className = 'lightbox';
+            var big = document.createElement('img');
+            big.src = img.src;
+            lb.appendChild(big);
+            lb.addEventListener('click', function () { lb.remove(); });
+            document.body.appendChild(lb);
+          });
+        });
+        var shot = document.getElementById('heroShot');
+        var noShot = function () { shot.hidden = true; document.getElementById('heroArt').hidden = false; };
+        if (shot.complete && shot.naturalWidth === 0) noShot(); else shot.addEventListener('error', noShot);
+        // Vidéo : seulement si demo.mp4 existe.
+        var src = document.querySelector('#demoVideo source');
+        src.addEventListener('error', function () { document.getElementById('videoSec').hidden = true; });
+        var vid = document.getElementById('demoVideo');
+        vid.addEventListener('error', function () { document.getElementById('videoSec').hidden = true; });
+        if (document.getElementById('gallery').querySelector('img')) vid.poster = 'captures/1.png';
+        if (location.hash === '#smartscreen') document.getElementById('faqSmart').open = true;
+
+        // Dernière version : liens directs vers l'installateur et la version portable.
+        fetch('https://api.github.com/repos/enzolegros16/val-lineup-app/releases/latest', { headers: { Accept: 'application/vnd.github+json' } })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (rel) {
+            if (!rel || !rel.assets) return;
+            var exes = rel.assets.filter(function (a) { return /\.exe$/i.test(a.name); });
+            var setup = exes.filter(function (a) { return /setup|install/i.test(a.name); })[0];
+            var portable = exes.filter(function (a) { return !/setup|install/i.test(a.name); })[0];
+            var main = setup || portable;
+            if (main) $$('.dl-setup').forEach(function (a) { a.href = main.browser_download_url; });
+            if (portable && setup) document.querySelector('.dl-portable').href = portable.browser_download_url;
+            else document.querySelector('.dl-portable-wrap').hidden = true;
+            var v = String(rel.tag_name || '').replace(/^v/i, '');
+            var mo = main ? Math.round(main.size / 1048576) : 0;
+            var el = document.querySelector('.dl-version');
+            if (v) {
+              window.onLangChangeExtra = function () {
+                el.textContent = (getLang() === 'en' ? 'Version ' : 'Version ') + v + (mo ? ' · ' + mo + (getLang() === 'en' ? ' MB' : ' Mo') : '') + (getLang() === 'en' ? ' · free · Windows 10 and 11' : ' · gratuit · Windows 10 et 11');
+              };
+              window.onLangChangeExtra();
+            }
+          }).catch(function () {});
+
+        // Bouton Discord (lien réglé par le créateur dans l'app et publié avec les lineups).
         fetch(SUPABASE_URL + '/rest/v1/library?id=eq.main&select=meta:data->meta', {
           headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY }
         }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
           var d = rows && rows[0] && rows[0].meta && rows[0].meta.discord;
           if (d && /^https:\/\/(discord\.gg|(www\.)?discord(app)?\.com\/invite)\//.test(d)) {
-            var b = document.getElementById('discordBtn');
-            b.href = d;
-            b.hidden = false;
+            $$('.dl-discord').forEach(function (b) { b.href = d; b.hidden = false; });
           }
         }).catch(function () {});
       }
+
       // On retire les jetons de l'adresse : ils ne doivent pas rester visibles ni être partagés.
       if (location.hash || location.search) history.replaceState(null, '', location.pathname);
 
