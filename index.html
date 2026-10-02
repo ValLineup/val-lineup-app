@@ -6,6 +6,7 @@
   <title>Val LineUp</title>
   <meta name="description" content="Val LineUp : apprends tes lineups Valorant. Clique sur un point d'impact, vois d'où et comment lancer.">
   <link rel="icon" type="image/png" href="favicon.png">
+  <script src="lang.js"></script>
   <style>
     :root {
       --bg: #0b0f14; --panel: #141b24; --line: #243040; --line-2: #2f3d50;
@@ -65,6 +66,14 @@
     .msg { margin: 0; font-size: 13px; color: #ffb3b3; }
     .links { margin-top: 18px; font-size: 13px; }
     .links a { color: var(--muted); }
+    .lang-switch { position: fixed; top: 14px; right: 14px; display: flex; border: 1px solid var(--line-2); border-radius: 8px; overflow: hidden; background: var(--panel); }
+    .lang-switch button { border: 0; background: transparent; color: var(--muted); padding: 6px 11px; font: inherit; font-size: 12.5px; cursor: pointer; }
+    .lang-switch button.on { background: var(--accent); color: #fff; }
+    .btn.discord { background: #5865f2; margin-left: 6px; }
+    .features { text-align: left; margin: 16px 0 6px; padding: 0; list-style: none; }
+    .features li { color: var(--muted); font-size: 14px; line-height: 1.5; padding: 5px 0 5px 22px; position: relative; }
+    .features li::before { content: '◆'; position: absolute; left: 2px; top: 5px; color: var(--accent); font-size: 11px; }
+    .small { font-size: 12.5px; color: var(--faint); margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -74,49 +83,84 @@
     <!-- Adresse confirmée -->
     <section class="card" id="ok" hidden>
       <div class="badge ok">✓</div>
-      <h1>Adresse mail confirmée</h1>
-      <p>Ton compte Val LineUp est activé.</p>
-      <p><b>Retourne dans l’application</b> et connecte-toi avec ton adresse mail et ton mot de passe.</p>
-      <p>Tu peux fermer cette page.</p>
+      <h1 data-i18n="okTitle">Adresse mail confirmée</h1>
+      <p data-i18n="okText1">Ton compte Val LineUp est activé.</p>
+      <p data-i18n="okText2"><b>Retourne dans l’application</b> et connecte-toi avec ton adresse mail et ton mot de passe.</p>
+      <p data-i18n="close">Tu peux fermer cette page.</p>
     </section>
 
     <!-- Lien expiré ou invalide -->
     <section class="card" id="ko" hidden>
       <div class="badge ko">!</div>
-      <h1>Lien expiré ou déjà utilisé</h1>
-      <p id="koText">Ce lien de confirmation n’est plus valable.</p>
-      <p>Essaie de te connecter dans l’application : si ton adresse était déjà confirmée, ça fonctionnera. Sinon, recrée ton compte pour recevoir un nouveau lien.</p>
+      <h1 data-i18n="koTitle">Lien expiré ou déjà utilisé</h1>
+      <p id="koText"></p>
+      <p data-i18n="koText2">Essaie de te connecter dans l’application : si ton adresse était déjà confirmée, ça fonctionnera. Sinon, recrée ton compte pour recevoir un nouveau lien.</p>
     </section>
 
     <!-- Nouveau mot de passe (lien « Mot de passe oublié ») -->
     <section class="card" id="reset" hidden>
-      <h1>Choisis un nouveau mot de passe</h1>
+      <h1 data-i18n="resetTitle">Choisis un nouveau mot de passe</h1>
       <form id="resetForm" novalidate>
-        <input type="password" id="pw1" placeholder="Nouveau mot de passe (8 caractères, lettres et chiffres)" autocomplete="new-password">
-        <input type="password" id="pw2" placeholder="Confirme le nouveau mot de passe" autocomplete="new-password">
+        <input type="password" id="pw1" data-i18n-ph="pw1" placeholder="Nouveau mot de passe (8 caractères, lettres et chiffres)" autocomplete="new-password">
+        <input type="password" id="pw2" data-i18n-ph="pw2" placeholder="Confirme le nouveau mot de passe" autocomplete="new-password">
         <p class="msg" id="resetMsg" hidden></p>
-        <button type="submit" class="btn" id="resetBtn">Enregistrer le mot de passe</button>
+        <button type="submit" class="btn" id="resetBtn" data-i18n="resetBtn">Enregistrer le mot de passe</button>
       </form>
     </section>
 
     <section class="card" id="resetOk" hidden>
       <div class="badge ok">✓</div>
-      <h1>Mot de passe modifié</h1>
-      <p><b>Retourne dans l’application</b> et connecte-toi avec ton nouveau mot de passe.</p>
-      <p>Tu peux fermer cette page.</p>
+      <h1 data-i18n="resetOkTitle">Mot de passe modifié</h1>
+      <p data-i18n="resetOkText"><b>Retourne dans l’application</b> et connecte-toi avec ton nouveau mot de passe.</p>
+      <p data-i18n="close">Tu peux fermer cette page.</p>
     </section>
 
     <!-- Visite normale : page de téléchargement -->
     <section class="card" id="home" hidden>
-      <h1>Apprends tes lineups Valorant</h1>
-      <p>Clique sur un point d’impact, vois d’où lancer, où te placer et où viser, puis entraîne-toi pour les retenir.</p>
-      <a class="btn" href="https://github.com/enzolegros16/val-lineup-app/releases/latest">Télécharger pour Windows</a>
+      <h1 data-i18n="homeTitle">Apprends tes lineups Valorant</h1>
+      <p data-i18n="homeText">Clique sur un point d’impact, vois d’où lancer, où te placer et où viser, puis entraîne-toi pour les retenir.</p>
+      <ul class="features">
+        <li data-i18n="f1">Captures « où se placer » et « où viser », étapes et vidéos au ralenti</li>
+        <li data-i18n="f2">Entraînement avec révisions espacées, dans les deux sens</li>
+        <li data-i18n="f3">Playbooks d’équipe, favoris, notes perso et suivi de ta progression</li>
+        <li data-i18n="f4">Partage d’un lineup à un pote en un lien</li>
+      </ul>
+      <a class="btn" href="https://github.com/enzolegros16/val-lineup-app/releases/latest" data-i18n="download">Télécharger pour Windows</a><a class="btn discord" id="discordBtn" hidden target="_blank" rel="noopener" data-i18n="discord">Rejoindre le Discord</a>
+      <p class="small" data-i18n="free">Gratuit · Windows 10 et 11 · compte gratuit obligatoire</p>
     </section>
 
-    <p class="links"><a href="confidentialite.html">Politique de confidentialité</a></p>
-    <p class="legal">Val LineUp n’est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de quiconque officiellement impliqué dans la production ou la gestion des propriétés de Riot Games. Riot Games et toutes les propriétés associées sont des marques commerciales ou des marques déposées de Riot Games, Inc.</p>
+    <p class="links"><a href="confidentialite.html" data-i18n="privacy">Politique de confidentialité</a></p>
+    <p class="legal" data-i18n="legal">Val LineUp n’est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de quiconque officiellement impliqué dans la production ou la gestion des propriétés de Riot Games. Riot Games et toutes les propriétés associées sont des marques commerciales ou des marques déposées de Riot Games, Inc.</p>
   </main>
 
+  <script>
+    window.I18N_TITLE = { fr: 'Val LineUp', en: 'Val LineUp' };
+    window.I18N_EN = {
+      okTitle: 'Email address confirmed',
+      okText1: 'Your Val LineUp account is now active.',
+      okText2: '<b>Go back to the app</b> and log in with your email address and password.',
+      close: 'You can close this page.',
+      koTitle: 'Link expired or already used',
+      koText2: 'Try logging in to the app: if your address was already confirmed, it will work. Otherwise, sign up again to get a new link.',
+      resetTitle: 'Choose a new password',
+      pw1: 'New password (8 characters, letters and numbers)',
+      pw2: 'Confirm the new password',
+      resetBtn: 'Save password',
+      resetOkTitle: 'Password changed',
+      resetOkText: '<b>Go back to the app</b> and log in with your new password.',
+      homeTitle: 'Learn your Valorant lineups',
+      homeText: 'Click an impact point, see where to throw from, where to stand and where to aim, then train to remember them.',
+      f1: '“Where to stand” and “where to aim” screenshots, steps and slow-motion videos',
+      f2: 'Spaced-repetition training, both ways',
+      f3: 'Team playbooks, favorites, personal notes and progress tracking',
+      f4: 'Share a lineup with a friend in one link',
+      download: 'Download for Windows',
+      discord: 'Join the Discord',
+      free: 'Free · Windows 10 and 11 · free account required',
+      privacy: 'Privacy policy',
+      legal: 'Val LineUp isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.'
+    };
+  </script>
   <script>
     (function () {
       // Adresse et clé PUBLIQUE du projet Supabase (la même que dans l'application).
@@ -129,19 +173,34 @@
       var token = hash.get('access_token');
       var type = hash.get('type');
       var show = function (id) { document.getElementById(id).hidden = false; };
+      var koExpired = false;
+      window.onLangChange = function () {
+        document.getElementById('koText').textContent = koExpired
+          ? L('Ce lien a expiré ou a déjà été utilisé.', 'This link has expired or has already been used.')
+          : L('Ce lien de confirmation n’est plus valable.', 'This confirmation link is no longer valid.');
+      };
 
       if (error) {
         show('ko');
         var code = hash.get('error_code') || query.get('error_code') || '';
-        if (code === 'otp_expired') {
-          document.getElementById('koText').textContent = 'Ce lien a expiré ou a déjà été utilisé.';
-        }
+        if (code === 'otp_expired') koExpired = true;
       } else if (token && type === 'recovery') {
         show('reset');
       } else if (token || type === 'signup' || query.get('code')) {
         show('ok');
       } else {
         show('home');
+        // Bouton Discord : le lien est réglé par le créateur dans l'app et publié avec les lineups.
+        fetch(SUPABASE_URL + '/rest/v1/library?id=eq.main&select=meta:data->meta', {
+          headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY }
+        }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
+          var d = rows && rows[0] && rows[0].meta && rows[0].meta.discord;
+          if (d && /^https:\/\/(discord\.gg|(www\.)?discord(app)?\.com\/invite)\//.test(d)) {
+            var b = document.getElementById('discordBtn');
+            b.href = d;
+            b.hidden = false;
+          }
+        }).catch(function () {});
       }
       // On retire les jetons de l'adresse : ils ne doivent pas rester visibles ni être partagés.
       if (location.hash || location.search) history.replaceState(null, '', location.pathname);
@@ -155,8 +214,8 @@
         var btn = document.getElementById('resetBtn');
         var fail = function (t) { msg.hidden = false; msg.textContent = t; };
         msg.hidden = true;
-        if (pw1.length < 8 || !/[a-z]/i.test(pw1) || !/\d/.test(pw1)) return fail('Le mot de passe doit faire au moins 8 caractères, avec au moins une lettre et un chiffre.');
-        if (pw1 !== pw2) return fail('Les deux mots de passe ne sont pas identiques.');
+        if (pw1.length < 8 || !/[a-z]/i.test(pw1) || !/\d/.test(pw1)) return fail(L('Le mot de passe doit faire au moins 8 caractères, avec au moins une lettre et un chiffre.', 'The password must be at least 8 characters long, with at least one letter and one number.'));
+        if (pw1 !== pw2) return fail(L('Les deux mots de passe ne sont pas identiques.', 'The two passwords do not match.'));
         btn.disabled = true;
         fetch(SUPABASE_URL + '/auth/v1/user', {
           method: 'PUT',
@@ -170,14 +229,14 @@
           }
           return res.json().catch(function () { return {}; }).then(function (j) {
             var all = (j.error_code || '') + ' ' + (j.msg || j.message || '');
-            if (res.status === 401 || /expired|invalid/i.test(all)) fail('Ce lien a expiré. Refais une demande « Mot de passe oublié » dans l’application.');
-            else if (/same_password|different/i.test(all)) fail('Le nouveau mot de passe doit être différent de l’ancien.');
-            else if (/weak|password should/i.test(all)) fail('Mot de passe trop faible : utilise au moins 8 caractères, avec lettres et chiffres.');
-            else fail('Impossible d’enregistrer le mot de passe. Réessaie plus tard.');
+            if (res.status === 401 || /expired|invalid/i.test(all)) fail(L('Ce lien a expiré. Refais une demande « Mot de passe oublié » dans l’application.', 'This link has expired. Request a new “Forgot password” link in the app.'));
+            else if (/same_password|different/i.test(all)) fail(L('Le nouveau mot de passe doit être différent de l’ancien.', 'The new password must be different from the old one.'));
+            else if (/weak|password should/i.test(all)) fail(L('Mot de passe trop faible : utilise au moins 8 caractères, avec lettres et chiffres.', 'Password too weak: use at least 8 characters, with letters and numbers.'));
+            else fail(L('Impossible d’enregistrer le mot de passe. Réessaie plus tard.', 'Could not save the password. Try again later.'));
             btn.disabled = false;
           });
         }).catch(function () {
-          fail('Connexion impossible. Vérifie ta connexion Internet.');
+          fail(L('Connexion impossible. Vérifie ta connexion Internet.', 'Could not connect. Check your Internet connection.'));
           btn.disabled = false;
         });
       });

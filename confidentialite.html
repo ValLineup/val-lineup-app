@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Confidentialité · Val LineUp</title>
   <link rel="icon" type="image/png" href="favicon.png">
+  <script src="lang.js"></script>
   <style>
     :root { --bg: #0b0f14; --panel: #141b24; --line: #243040; --text: #e9eef4; --muted: #9aa9bd; --faint: #5d6b7e; --accent: #ff4655; }
     * { box-sizing: border-box; }
@@ -29,75 +30,121 @@
     li { margin-bottom: 4px; }
     b { color: var(--text); font-weight: 600; }
     a { color: var(--accent); }
-    .todo { background: rgba(255, 70, 85, 0.15); color: var(--text); padding: 0 6px; border-radius: 4px; }
+    .lang-switch { position: fixed; top: 14px; right: 14px; display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--panel); }
+    .lang-switch button { border: 0; background: transparent; color: var(--muted); padding: 6px 11px; font: inherit; font-size: 12.5px; cursor: pointer; }
+    .lang-switch button.on { background: var(--accent); color: #fff; }
   </style>
 </head>
 <body>
   <main>
     <header>
       <img src="logo.png" alt="Val LineUp">
-      <a href="./">← Retour à l’accueil</a>
+      <a href="./" data-i18n="back">← Retour à l’accueil</a>
     </header>
 
-    <h1>Politique de confidentialité</h1>
-    <p class="updated">Dernière mise à jour : 2 octobre 2026</p>
+    <h1 data-i18n="h1">Politique de confidentialité</h1>
+    <p class="updated" data-i18n="updated">Dernière mise à jour : 2 octobre 2026</p>
 
     <section>
-      <h2>Qui est responsable de tes données ?</h2>
-      <p>Val LineUp est une application gratuite créée et gérée par Enzo, à titre personnel. Pour toute question sur tes données, écris à : <b class="todo">valolineup.support.pro@gmail.com</b>.</p>
+      <h2 data-i18n="s1h">Qui est responsable de tes données ?</h2>
+      <p data-i18n="s1p">Val LineUp est une application gratuite créée et gérée par Enzo, à titre personnel. Pour toute question sur tes données, écris à : <a href="mailto:valolineup.support.pro@gmail.com">valolineup.support.pro@gmail.com</a>.</p>
     </section>
 
     <section>
-      <h2>Quelles données sont enregistrées ?</h2>
+      <h2 data-i18n="s2h">Quelles données sont enregistrées ?</h2>
       <ul>
-        <li><b>Ton compte</b> : ton adresse mail, ton pseudo et ton mot de passe. Le mot de passe n’est jamais stocké en clair : il est chiffré par notre hébergeur, et personne ne peut le lire, pas même le créateur de l’app.</li>
-        <li><b>Ta progression</b> : les lineups que tu as marqués comme maîtrisés, tes révisions d’entraînement, tes agents choisis et tes préférences de l’app.</li>
-        <li><b>Tes signalements</b> : quand tu signales un problème sur un lineup, on enregistre le lineup concerné, la raison, ton message éventuel et la version de l’app. Les signalements ne sont pas reliés à ton compte.</li>
-        <li><b>Des statistiques anonymes</b> : de simples compteurs globaux (nombre de consultations de chaque lineup, nombre d’essais et d’erreurs à l’entraînement, nombre d’ouvertures de chaque map). Ils ne sont reliés ni à ton compte ni à ton adresse mail, et ne permettent pas de savoir ce que toi tu as fait.</li>
+        <li data-i18n="s2a"><b>Ton compte</b> : ton adresse mail, ton pseudo et ton mot de passe. Le mot de passe n’est jamais stocké en clair : il est chiffré par notre hébergeur, et personne ne peut le lire, pas même le créateur de l’app.</li>
+        <li data-i18n="s2b"><b>Ta progression</b> : les lineups que tu as marqués comme maîtrisés, tes révisions d’entraînement, tes jours d’entraînement, tes favoris, tes notes perso, tes agents choisis et tes préférences de l’app (dont la langue).</li>
+        <li data-i18n="s2c"><b>Tes signalements</b> : quand tu signales un problème sur un lineup, on enregistre le lineup concerné, la raison, ton message éventuel et la version de l’app. Les signalements ne sont pas reliés à ton compte.</li>
+        <li data-i18n="s2d"><b>Des statistiques anonymes</b> : de simples compteurs globaux (nombre de consultations de chaque lineup, nombre d’essais et d’erreurs à l’entraînement, nombre d’ouvertures de chaque map). Ils ne sont reliés ni à ton compte ni à ton adresse mail, et ne permettent pas de savoir ce que toi tu as fait.</li>
       </ul>
-      <p>L’application ne collecte <b>aucune donnée de jeu</b> : elle ne lit pas Valorant, ne se connecte pas à ton compte Riot et ne fonctionne pas pendant les parties.</p>
+      <p data-i18n="s2e">L’application ne collecte <b>aucune donnée de jeu</b> : elle ne lit pas Valorant, ne se connecte pas à ton compte Riot et ne fonctionne pas pendant les parties.</p>
     </section>
 
     <section>
-      <h2>Pourquoi ?</h2>
+      <h2 data-i18n="s3h">Pourquoi ?</h2>
       <ul>
-        <li>Te permettre de te connecter et de garder ton accès à l’application.</li>
-        <li>Retrouver ta progression sur n’importe quel PC.</li>
-        <li>T’envoyer les mails indispensables : confirmation d’adresse et réinitialisation du mot de passe. <b>Aucun mail publicitaire</b> n’est envoyé.</li>
-        <li>Corriger les lineups signalés.</li>
-        <li>Savoir quels lineups sont les plus utiles ou les plus difficiles, pour améliorer le contenu (statistiques anonymes).</li>
+        <li data-i18n="s3a">Te permettre de te connecter et de garder ton accès à l’application.</li>
+        <li data-i18n="s3b">Retrouver ta progression sur n’importe quel PC.</li>
+        <li data-i18n="s3c">T’envoyer les mails indispensables : confirmation d’adresse et réinitialisation du mot de passe. <b>Aucun mail publicitaire</b> n’est envoyé.</li>
+        <li data-i18n="s3d">Corriger les lineups signalés.</li>
+        <li data-i18n="s3e">Savoir quels lineups sont les plus utiles ou les plus difficiles, pour améliorer le contenu (statistiques anonymes).</li>
       </ul>
-      <p>Tes données ne sont <b>jamais vendues, louées ni partagées</b> à des fins commerciales, et il n’y a ni publicité ni outil de suivi dans l’application.</p>
+      <p data-i18n="s3f">Tes données ne sont <b>jamais vendues, louées ni partagées</b> à des fins commerciales, et il n’y a ni publicité ni outil de suivi dans l’application.</p>
     </section>
 
     <section>
-      <h2>Où sont-elles stockées ?</h2>
-      <p>Les comptes, la progression, les signalements et les statistiques anonymes sont hébergés par <b>Supabase</b> (base de données), sur des serveurs situés en Europe. L’application et cette page sont distribuées par <b>GitHub</b>. Les mails sont envoyés par un service d’envoi d’emails, uniquement pour les messages listés plus haut.</p>
-      <p>Une copie de ta progression et des lineups est aussi gardée <b>sur ton PC</b>, pour que l’app fonctionne hors ligne.</p>
+      <h2 data-i18n="s4h">Où sont-elles stockées ?</h2>
+      <p data-i18n="s4a">Les comptes, la progression, les signalements et les statistiques anonymes sont hébergés par <b>Supabase</b> (base de données), sur des serveurs situés en Europe. L’application et cette page sont distribuées par <b>GitHub</b>. Les mails sont envoyés par un service d’envoi d’emails, uniquement pour les messages listés plus haut.</p>
+      <p data-i18n="s4b">Une copie de ta progression et des lineups est aussi gardée <b>sur ton PC</b>, pour que l’app fonctionne hors ligne.</p>
     </section>
 
     <section>
-      <h2>Combien de temps ?</h2>
-      <p>Tes données sont conservées tant que ton compte existe. Quand tu supprimes ton compte, ton adresse mail, ton pseudo et ta progression en ligne sont effacés immédiatement. Les signalements, anonymes, peuvent être conservés jusqu’à leur traitement.</p>
+      <h2 data-i18n="s8h">Liens de partage et Discord</h2>
+      <p data-i18n="s8a">Quand tu partages un lineup, le lien contient seulement l’identifiant du lineup, son nom, la map et le point d’impact : <b>aucune information sur ton compte</b>. Le bouton Discord ouvre simplement le serveur Discord de Val LineUp dans ton navigateur ; Discord a sa propre politique de confidentialité.</p>
     </section>
 
     <section>
-      <h2>Tes droits</h2>
-      <p>Conformément au RGPD, tu peux à tout moment accéder à tes données, les corriger ou les supprimer :</p>
+      <h2 data-i18n="s5h">Combien de temps ?</h2>
+      <p data-i18n="s5a">Tes données sont conservées tant que ton compte existe. Quand tu supprimes ton compte, ton adresse mail, ton pseudo et ta progression en ligne sont effacés immédiatement. Les signalements, anonymes, peuvent être conservés jusqu’à leur traitement.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="s6h">Tes droits</h2>
+      <p data-i18n="s6a">Conformément au RGPD, tu peux à tout moment accéder à tes données, les corriger ou les supprimer :</p>
       <ul>
-        <li><b>Modifier ton pseudo ou ton mot de passe</b> : dans l’app, bouton avec ton pseudo en haut à droite → Mon compte.</li>
-        <li><b>Supprimer ton compte</b> : Mon compte → « Supprimer mon compte ». La suppression est immédiate et définitive.</li>
-        <li>Pour toute autre demande (copie de tes données, question), écris à l’adresse de contact ci-dessus.</li>
+        <li data-i18n="s6b"><b>Modifier ton pseudo ou ton mot de passe</b> : dans l’app, bouton avec ton pseudo en haut à droite → Mon compte.</li>
+        <li data-i18n="s6c"><b>Supprimer ton compte</b> : Mon compte → « Supprimer mon compte ». La suppression est immédiate et définitive.</li>
+        <li data-i18n="s6d">Pour toute autre demande (copie de tes données, question), écris à l’adresse de contact ci-dessus.</li>
       </ul>
-      <p>Si tu estimes que tes droits ne sont pas respectés, tu peux adresser une réclamation à la CNIL (<a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>).</p>
+      <p data-i18n="s6e">Si tu estimes que tes droits ne sont pas respectés, tu peux adresser une réclamation à la CNIL (<a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>).</p>
     </section>
 
     <section>
-      <h2>Âge minimum</h2>
-      <p>En France, il faut avoir au moins 15 ans pour créer un compte seul. En dessous, l’accord d’un parent est nécessaire.</p>
+      <h2 data-i18n="s7h">Âge minimum</h2>
+      <p data-i18n="s7a">En France, il faut avoir au moins 15 ans pour créer un compte seul. En dessous, l’accord d’un parent est nécessaire.</p>
     </section>
 
-    <p class="updated" style="margin-top: 24px">Val LineUp n’est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de quiconque officiellement impliqué dans la production ou la gestion des propriétés de Riot Games. Riot Games et toutes les propriétés associées sont des marques commerciales ou des marques déposées de Riot Games, Inc.</p>
+    <p class="updated" style="margin-top: 24px" data-i18n="legal">Val LineUp n’est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de quiconque officiellement impliqué dans la production ou la gestion des propriétés de Riot Games. Riot Games et toutes les propriétés associées sont des marques commerciales ou des marques déposées de Riot Games, Inc.</p>
   </main>
+  <script>
+    window.I18N_TITLE = { fr: 'Confidentialité · Val LineUp', en: 'Privacy · Val LineUp' };
+    window.I18N_EN = {
+      back: '← Back to home',
+      h1: 'Privacy policy',
+      updated: 'Last updated: October 2, 2026',
+      s1h: 'Who is responsible for your data?',
+      s1p: 'Val LineUp is a free app created and run by Enzo, as a personal project. For any question about your data, write to: <a href="mailto:valolineup.support.pro@gmail.com">valolineup.support.pro@gmail.com</a>.',
+      s2h: 'What data is stored?',
+      s2a: '<b>Your account</b>: your email address, your username and your password. The password is never stored in plain text: it is encrypted by our host, and nobody can read it, not even the app’s creator.',
+      s2b: '<b>Your progress</b>: the lineups you marked as mastered, your training reviews, your training days, your favorites, your personal notes, your chosen agents and your app preferences (including the language).',
+      s2c: '<b>Your reports</b>: when you report a problem with a lineup, we store the lineup concerned, the reason, your optional message and the app version. Reports are not linked to your account.',
+      s2d: '<b>Anonymous statistics</b>: simple global counters (how many times each lineup was viewed, how many training attempts and mistakes, how many times each map was opened). They are linked neither to your account nor to your email address, and can’t tell what you did.',
+      s2e: 'The app collects <b>no game data</b>: it doesn’t read Valorant, doesn’t connect to your Riot account and doesn’t run during matches.',
+      s3h: 'Why?',
+      s3a: 'To let you log in and keep access to the app.',
+      s3b: 'To restore your progress on any PC.',
+      s3c: 'To send you the essential emails: address confirmation and password reset. <b>No advertising email</b> is ever sent.',
+      s3d: 'To fix reported lineups.',
+      s3e: 'To know which lineups are the most useful or the hardest, to improve the content (anonymous statistics).',
+      s3f: 'Your data is <b>never sold, rented or shared</b> for commercial purposes, and there are no ads or tracking tools in the app.',
+      s4h: 'Where is it stored?',
+      s4a: 'Accounts, progress, reports and anonymous statistics are hosted by <b>Supabase</b> (database), on servers located in Europe. The app and this page are distributed by <b>GitHub</b>. Emails are sent by an email delivery service, only for the messages listed above.',
+      s4b: 'A copy of your progress and of the lineups is also kept <b>on your PC</b>, so the app works offline.',
+      s8h: 'Share links and Discord',
+      s8a: 'When you share a lineup, the link only contains the lineup’s ID, its name, the map and the impact point: <b>no information about your account</b>. The Discord button simply opens the Val LineUp Discord server in your browser; Discord has its own privacy policy.',
+      s5h: 'For how long?',
+      s5a: 'Your data is kept as long as your account exists. When you delete your account, your email address, username and online progress are erased immediately. Anonymous reports may be kept until they are handled.',
+      s6h: 'Your rights',
+      s6a: 'Under the GDPR, you can access, correct or delete your data at any time:',
+      s6b: '<b>Change your username or password</b>: in the app, the button with your username at the top right → My account.',
+      s6c: '<b>Delete your account</b>: My account → “Delete my account”. Deletion is immediate and permanent.',
+      s6d: 'For any other request (a copy of your data, a question), write to the contact address above.',
+      s6e: 'If you believe your rights are not respected, you can file a complaint with the CNIL (<a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>), the French data protection authority.',
+      s7h: 'Minimum age',
+      s7a: 'In France, you must be at least 15 to create an account on your own. Below that age, a parent’s consent is required.',
+      legal: 'Val LineUp isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.'
+    };
+  </script>
 </body>
 </html>

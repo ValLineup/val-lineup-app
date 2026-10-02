@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lineup partagé · Val LineUp</title>
+  <meta name="description" content="Un lineup Valorant partagé avec Val LineUp. Ouvre-le directement dans l’application.">
+  <meta property="og:title" content="Val LineUp · Lineup partagé">
+  <meta property="og:description" content="Clique pour ouvrir ce lineup Valorant dans Val LineUp : où se placer, où viser, comment lancer.">
+  <meta property="og:image" content="https://enzolegros16.github.io/val-lineup-app/logo.png">
+  <meta name="theme-color" content="#ff4655">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <script src="lang.js"></script>
+  <style>
+    :root {
+      --bg: #0b0f14; --panel: #141b24; --line: #243040; --line-2: #2f3d50;
+      --text: #e9eef4; --muted: #8b9bb0; --faint: #5d6b7e; --accent: #ff4655; --throw: #4cc9f0;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: 'Bahnschrift', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255, 70, 85, 0.16), transparent 45%),
+        radial-gradient(circle at 85% 90%, rgba(76, 201, 240, 0.10), transparent 50%),
+        var(--bg);
+      min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 32px 16px;
+    }
+    main { width: 100%; max-width: 460px; text-align: center; }
+    .logo { width: 150px; height: auto; filter: drop-shadow(0 0 22px rgba(255, 70, 85, 0.3)); }
+    .card { margin-top: 22px; background: var(--panel); border: 1px solid var(--line-2); border-radius: 14px; padding: 26px 24px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45); }
+    .kicker { font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--throw); margin-bottom: 8px; }
+    h1 { margin: 0 0 6px; font-size: 24px; font-weight: 600; overflow-wrap: anywhere; }
+    .where { color: var(--muted); font-size: 14.5px; margin: 0 0 18px; overflow-wrap: anywhere; }
+    p { margin: 0 0 12px; color: var(--muted); line-height: 1.55; font-size: 14px; }
+    .btn { display: inline-block; margin: 6px 4px 0; padding: 12px 20px; border-radius: 8px; background: var(--accent); color: #fff; text-decoration: none; font-size: 14.5px; }
+    .btn:hover { filter: brightness(1.08); }
+    .btn.ghost { background: transparent; border: 1px solid var(--line-2); color: var(--text); }
+    .btn.discord { background: #5865f2; }
+    .help { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); text-align: left; }
+    .help p { font-size: 13px; }
+    .help ol { margin: 0; padding-left: 20px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .legal { margin-top: 22px; font-size: 11.5px; color: var(--faint); line-height: 1.5; }
+    .links { margin-top: 16px; font-size: 13px; }
+    .links a { color: var(--muted); }
+    [hidden] { display: none !important; }
+    .lang-switch { position: fixed; top: 14px; right: 14px; display: flex; border: 1px solid var(--line-2); border-radius: 8px; overflow: hidden; background: var(--panel); }
+    .lang-switch button { border: 0; background: transparent; color: var(--muted); padding: 6px 11px; font: inherit; font-size: 12.5px; cursor: pointer; }
+    .lang-switch button.on { background: var(--accent); color: #fff; }
+  </style>
+</head>
+<body>
+  <main>
+    <img class="logo" src="logo.png" alt="Val LineUp">
+
+    <section class="card" id="share" hidden>
+      <div class="kicker" data-i18n="kicker">Un lineup t’a été partagé</div>
+      <h1 id="title"></h1>
+      <p class="where" id="where"></p>
+      <a class="btn" id="openBtn" data-i18n="open">Ouvrir dans Val LineUp</a>
+      <div class="help">
+        <p data-i18n="noApp"><b>Rien ne s’ouvre ?</b> Installe d’abord l’application :</p>
+        <ol>
+          <li data-i18n="step1">Télécharge Val LineUp et lance-la une fois (connecte-toi ou crée ton compte gratuit).</li>
+          <li data-i18n="step2">Reviens sur cette page et clique sur « Ouvrir dans Val LineUp ».</li>
+        </ol>
+        <p style="margin-top: 12px; text-align: center">
+          <a class="btn ghost" href="https://github.com/enzolegros16/val-lineup-app/releases/latest" data-i18n="download">Télécharger pour Windows</a>
+          <a class="btn discord" id="discordBtn" hidden target="_blank" rel="noopener" data-i18n="discord">Rejoindre le Discord</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="bad" hidden>
+      <h1 data-i18n="badTitle">Lien incomplet</h1>
+      <p data-i18n="badText">Ce lien de partage n’est pas valide. Demande à ton pote de le recopier depuis l’application (bouton « Partager » sur le lineup).</p>
+      <a class="btn" href="./" data-i18n="home">Découvrir Val LineUp</a>
+    </section>
+
+    <p class="links"><a href="./" data-i18n="homeLink">Accueil</a> · <a href="confidentialite.html" data-i18n="privacy">Confidentialité</a></p>
+    <p class="legal" data-i18n="legal">Val LineUp n’est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de quiconque officiellement impliqué dans la production ou la gestion des propriétés de Riot Games. Riot Games et toutes les propriétés associées sont des marques commerciales ou des marques déposées de Riot Games, Inc.</p>
+  </main>
+
+  <script>
+    window.I18N_TITLE = { fr: 'Lineup partagé · Val LineUp', en: 'Shared lineup · Val LineUp' };
+    window.I18N_EN = {
+      kicker: 'A lineup was shared with you',
+      open: 'Open in Val LineUp',
+      noApp: '<b>Nothing happens?</b> Install the app first:',
+      step1: 'Download Val LineUp and launch it once (log in or create your free account).',
+      step2: 'Come back to this page and click “Open in Val LineUp”.',
+      download: 'Download for Windows',
+      discord: 'Join the Discord',
+      badTitle: 'Incomplete link',
+      badText: 'This share link isn’t valid. Ask your friend to copy it again from the app (“Share” button on the lineup).',
+      home: 'Discover Val LineUp',
+      homeLink: 'Home',
+      privacy: 'Privacy',
+      legal: 'Val LineUp isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.'
+    };
+  </script>
+  <script>
+    (function () {
+      var SUPABASE_URL = 'https://oxeirzkulmwkwwwfcjyj.supabase.co';
+      var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94ZWlyemt1bG13a3d3d2ZjanlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA4NTc5MjYsImV4cCI6MjEwNjQzMzkyNn0.J7Gw12pzBIj2DS-osRE3h_yqzTcojDyEhoVMBfO5YCo';
+
+      var q = new URLSearchParams(location.search);
+      var id = q.get('id') || '';
+      var clip = function (s, n) { s = String(s || '').trim(); return s.length > n ? s.slice(0, n) + '…' : s; };
+
+      if (!/^[A-Za-z0-9_-]{6,64}$/.test(id)) {
+        document.getElementById('bad').hidden = false;
+        return;
+      }
+      var deep = 'valolineup://lineup/' + id;
+      document.getElementById('share').hidden = false;
+      document.getElementById('openBtn').href = deep;
+      var title = clip(q.get('t'), 80);
+      var where = [clip(q.get('m'), 30), clip(q.get('p'), 40)].filter(Boolean).join(' · ');
+      window.onLangChange = function () {
+        // Textes venant du lien : toujours en texte brut (jamais interprétés comme du HTML).
+        document.getElementById('title').textContent = title || L('Lineup Valorant', 'Valorant lineup');
+        document.getElementById('where').textContent = where;
+      };
+
+      // On tente d'ouvrir l'app directement (le navigateur demande d'abord la permission).
+      setTimeout(function () { location.href = deep; }, 500);
+
+      fetch(SUPABASE_URL + '/rest/v1/library?id=eq.main&select=meta:data->meta', {
+        headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY }
+      }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
+        var d = rows && rows[0] && rows[0].meta && rows[0].meta.discord;
+        if (d && /^https:\/\/(discord\.gg|(www\.)?discord(app)?\.com\/invite)\//.test(d)) {
+          var b = document.getElementById('discordBtn');
+          b.href = d;
+          b.hidden = false;
+        }
+      }).catch(function () {});
+    })();
+  </script>
+</body>
+</html>
